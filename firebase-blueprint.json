@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "validationRecord": {
+      "title": "ValidationRecord",
+      "description": "Biometric and INE verification record with post-quantum security seal",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "status": {
+          "type": "string",
+          "enum": ["approved", "rejected", "flagged"]
+        },
+        "fullName": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "curp": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "claveElector": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "biometricMatchScore": {
+          "type": "number"
+        },
+        "livenessScore": {
+          "type": "number"
+        },
+        "quantumHash": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "latticeKeyId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "ineModel": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "auditLogCount": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "maxLength": 64
+        }
+      },
+      "required": ["id", "userId", "status", "quantumHash", "createdAt"]
+    },
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "createdAt": {
+          "type": "string",
+          "maxLength": 64
+        }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/validations/{validationId}": {
+      "schema": "validationRecord",
+      "description": "Collection of biocuantum verified INE biometric records"
+    },
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "User profiles"
+    }
+  }
+}

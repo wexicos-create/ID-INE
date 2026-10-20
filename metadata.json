@@ -1,0 +1,6 @@
+{
+  "name": "BioINE Quantum - Validación Biométrica y Prueba de Vida",
+  "description": "Sistema de validación biométrica de credenciales INE y prueba de vida con doble filtro de IA forense y bóveda de cifrado biocuántico.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
